@@ -1,34 +1,9 @@
-
-
 # import 2017_plays.csv
 import pandas as pd
 
 # read the csv file
 df = pd.read_csv('Classify Plays/2017_plays.csv')
 
-# print the first 5 rows
-print(df.head())
-
-# print the column names
-print(df.columns)
-
-# print the shape of the dataframe
-print(df.shape)
-
-print("=" *60)
-print("Play Outcome:")
-print("=" *60)
-print(df.PlayOutcome.head(10))
-
-print("=" *60)
-print("Play Description:")
-print("=" *60)
-print(df.PlayDescription.head(10))
-
-
-# ============================================================
-# FUNCTION TO CLASSIFY PLAY CALLS
-# ============================================================
 
 def classify_play_call(row):
     """
@@ -197,51 +172,3 @@ def process_play_file(input_path, output_path=None):
         print(f"\nSaved to: {output_path}")
     
     return df_clean
-
-
-# ============================================================
-# TEST THE FUNCTION
-# ============================================================
-
-print("\n" + "=" *60)
-print("Testing Classification Function:")
-print("=" *60)
-
-# Apply the function
-df['Play_Call'] = df.apply(classify_play_call, axis=1)
-
-# Show distribution
-print("\nPlay Call Distribution:")
-print(df['Play_Call'].value_counts())
-
-print("\n% of plays kept:")
-print(f"{(df['Play_Call'].notna().sum() / len(df)) * 100:.2f}%")
-
-print("\n% of plays removed:")
-print(f"{(df['Play_Call'].isna().sum() / len(df)) * 100:.2f}%")
-
-# Show some examples
-print("\n" + "=" *60)
-print("Sample Classifications:")
-print("=" *60)
-sample = df[df['Play_Call'].notna()].groupby('Play_Call').head(2)[['PlayOutcome', 'PlayDescription', 'Play_Call']]
-for idx, row in sample.iterrows():
-    print(f"\nPlay Call: {row['Play_Call']}")
-    print(f"Outcome: {row['PlayOutcome']}")
-    print(f"Description: {row['PlayDescription'][:100]}...")
-
-
-# ============================================================
-# EXAMPLE: Process a file and save it
-# ============================================================
-print("\n\n" + "=" * 60)
-print("Example: Processing and saving a file")
-print("=" * 60)
-
-# Process 2017 data and save
-df_2017_classified = process_play_file(
-    'Classify Plays/2017_plays.csv',
-    'Classify Plays/2017_plays_classified.csv'
-)
-
-print("\n✓ Done! You can now use process_play_file() for any new_format CSV file.")
