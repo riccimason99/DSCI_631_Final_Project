@@ -83,6 +83,8 @@ def classify_play_call(row):
             return 'Long_Pass'
         elif 'short' in desc:
             return 'Short_Pass'
+        elif 'spike' in desc:
+            return 'Spike'
         else:
             return None  # Default to none if we cant determine if it was short or deep
     
