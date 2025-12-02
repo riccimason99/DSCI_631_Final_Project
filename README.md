@@ -22,11 +22,15 @@ We use regular season NFL games from 2017-2025.
 
 ### **Features** 
 
-- **Down**: 
+- **Down**: Down number, extracted from "PlayStart"
 
-- **YdsTo1stDown**: 
+- **ScoreDifference**: Difference between the offensive team and the defensive team score 
 
-- **YdsToEndzone**: 
+- **MinRemaining**: Minutes left in the game
+
+- **YdsTo1stDown**: How many yards to the first down, extracted from "PlayStart"
+
+- **YdsToEndzone**: How many yards offensive team is from the endzone, extracted from "Playstart"
 
 - **team_run_pct**: The likelihood of a team running compared to long or short pass
 
