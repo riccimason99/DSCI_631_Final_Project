@@ -1,6 +1,6 @@
 # DSCI ML FINAL PROJECT
 Mason Ricci 
-Mary 
+Mary Sullivan
 
 
 ## Description: 
